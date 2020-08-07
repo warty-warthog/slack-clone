@@ -1,31 +1,38 @@
 html,
 body,
 .app {
-    height: 100vh;
-    background: #eee;
-    padding: 1em;
+  height: 100vh;
+  background: #eee;
+  padding: 1em;
 }
 
 /* Messages.jsx */
 .messages {
-    height: 440px;
-    overflow-y: scroll;
+  height: 62vh;
+  overflow-y: scroll;
 }
-
 
 /* MessageForm.jsx */
 .message__form {
-    position: fixed !important;
-    bottom: 1em;
-    margin-left: 320px !important;
-    left: 0;
-    right: 1em;
-    z-index: 200;
+  position: fixed !important;
+  bottom: 1em;
+  margin-left: 320px !important;
+  left: 0;
+  right: 1em;
+  z-index: 200;
 }
-
 
 /* Message.jsx */
 .message__self {
-    border-left: 2px solid orange;
-    padding-left: 8px;
+  border-left: 2px solid orange;
+  padding-left: 8px;
+}
+
+.message__image {
+  padding: 1em;
+}
+
+/* ProgressBar.jsx */
+.progress__bar {
+  margin: 0.3em 0 0 0 !important;
 }
