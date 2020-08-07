@@ -5,6 +5,10 @@ body,
   background: #eee;
   padding: 1em;
 }
+/* SidePanel.jsx */
+.menu {
+  padding-bottom: 2em;
+}
 
 /* Messages.jsx */
 .messages {

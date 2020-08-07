@@ -13,7 +13,7 @@ class Channels extends React.Component {
     channelDetails: "",
     channelsRef: firebase.database().ref("channels"),
     modal: false,
-    firstLoad: true
+    firstLoad: true,
   };
 
   componentDidMount() {
@@ -26,11 +26,11 @@ class Channels extends React.Component {
 
   removeListeners = () => {
     this.state.channelsRef.off();
-  }
+  };
 
   addListeners = () => {
     let loadedChannels = [];
-    this.state.channelsRef.on("child_added", snap => {
+    this.state.channelsRef.on("child_added", (snap) => {
       loadedChannels.push(snap.val());
       this.setState({ channels: loadedChannels }, () => this.setFirstChannel());
     });
@@ -56,8 +56,8 @@ class Channels extends React.Component {
       details: channelDetails,
       createdBy: {
         name: user.displayName,
-        avatar: user.photoURL
-      }
+        avatar: user.photoURL,
+      },
     };
 
     channelsRef
@@ -68,34 +68,34 @@ class Channels extends React.Component {
         this.closeModal();
         console.log("channel added");
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
       });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     if (this.isFormValid(this.state)) {
       this.addChannel();
     }
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  changeChannel = channel => {
+  changeChannel = (channel) => {
     this.setActiveChannel(channel);
     this.props.setCurrentChannel(channel);
   };
 
-  setActiveChannel = channel => {
+  setActiveChannel = (channel) => {
     this.setState({ activeChannel: channel.id });
   };
 
-  displayChannels = channels =>
+  displayChannels = (channels) =>
     channels.length > 0 &&
-    channels.map(channel => (
+    channels.map((channel) => (
       <Menu.Item
         key={channel.id}
         onClick={() => this.changeChannel(channel)}
@@ -119,7 +119,7 @@ class Channels extends React.Component {
 
     return (
       <React.Fragment>
-        <Menu.Menu style={{ paddingBottom: "2em" }}>
+        <Menu.Menu className="menu">
           <Menu.Item>
             <span>
               <Icon name="exchange" /> CHANNELS
@@ -168,7 +168,4 @@ class Channels extends React.Component {
   }
 }
 
-export default connect(
-  null,
-  { setCurrentChannel }
-)(Channels);
+export default connect(null, { setCurrentChannel })(Channels);
